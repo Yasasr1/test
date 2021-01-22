@@ -25,7 +25,7 @@ jobs:
       run: |
         INPUT=${{github.event.inputs.send-notification}}
         SEND_NOTIFICATION=${INPUT^^}
-        if [["$SEND_NOTIFICATION" == "TRUE"]]; then
+        if [ $SEND_NOTIFICATION == "TRUE" ]; then
           echo "true"
         else
           echo "false"
