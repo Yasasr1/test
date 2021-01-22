@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Test
-      if: ${{github.event.inputs.send-notification^^}} == 'TRUE'
+      if: ${{github.event.inputs.send-notification}} == 'true'
       run: echo "true"
     
     - uses: actions/checkout@v2
