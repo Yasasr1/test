@@ -11,6 +11,10 @@ on:
         description: 'product-is tag name'
         required: true
         default: 'v5.12.0-m6'
+      send-notification:
+        description: 'send google chat notification'
+        required: true
+        default: true
 
 jobs:
   build:
@@ -83,7 +87,7 @@ jobs:
         path: ./*log.txt
     
     - name: Send Google Chat Notification
-      if: always()
+      if: ${{github.event.inputs.send-notification}}
       run: |
         CONFORMANCE_SUITE_URL=https://localhost:8443
         sudo python3 ./product-is/oidc-conformance-tests/send_notification.py $CONFORMANCE_SUITE_URL $GITHUB_RUN_NUMBER ${{job.status}} ${{github.repository}} ${{github.run_id}} ${{secrets.GOOGLE_WEBHOOK}}
