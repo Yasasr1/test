@@ -21,6 +21,10 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
+    - name: Test
+      if: ${{github.event.inputs.send-notification}}
+      run: echo "true"
+    
     - uses: actions/checkout@v2
       with:
         path: './product-is'
