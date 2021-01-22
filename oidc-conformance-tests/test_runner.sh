@@ -7,6 +7,7 @@ IS_SUCCESSFUL=false
 IS_LOCAL=false
 
 if $IS_LOCAL; then
+  PATH_TO_SCRIPTS=.
   PRODUCT_IS_ZIP_PATH=path
   echo "====================="
   echo "Identity Server Setup"
@@ -52,6 +53,10 @@ echo
 if sudo python3 $PATH_TO_SCRIPTS/export_results.py $CONFORMANCE_SUITE_URL
 then
   IS_SUCCESSFUL=true
+fi
+
+if $IS_LOCAL; then
+  sudo pkill -f wso2
 fi
 
 if $IS_SUCCESSFUL
