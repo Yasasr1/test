@@ -27,18 +27,6 @@ jobs:
     - uses: actions/checkout@v2
       with:
         path: './product-is'
-     
-    - name: Test vars
-      run: |
-        INPUT=${{github.event.inputs.send-notification}}
-        IN_TAG=${{github.event.inputs.tag}}
-        echo $INPUT
-        echo $IN_TAG
-        if [[ -z "${INPUT}" ]]; then
-          echo "manual run"
-        else
-          echo "automatically run"
-        fi
       
     - name: Set up JDK 11
       uses: actions/setup-java@v1
@@ -56,11 +44,9 @@ jobs:
         repo="product-is"
         INPUT_TAG=${{github.event.inputs.tag}}
         if [[ -z "${INPUT_TAG}" ]]; then
-          echo "Automatically run"
           tag=${GITHUB_REF:10}
           tag_trimmed=${tag// }
         else
-          echo "Manually run"
           tag=${{github.event.inputs.tag}}
           tag_trimmed=${tag// }
         fi
@@ -117,6 +103,9 @@ jobs:
       if: always()
       run: |
         INPUT=${{github.event.inputs.send-notification}}
+        if [[ -z "${INPUT}" ]]; then
+          INPUT="true"
+        fi
         SEND_NOTIFICATION=${INPUT^^}
         if [ $SEND_NOTIFICATION == "TRUE" ]; then
           CONFORMANCE_SUITE_URL=https://localhost:8443
