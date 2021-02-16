@@ -7,7 +7,7 @@ OIDC conformance test workflow can be used to for this purpose.
 2. Click on OIDC conformance test workflow
 3. Click on Run workflow
 4. You need to provide the tag name of the product-is version you want to test (default value is "v5.12.0-m6")
-5. Set send google chat notification to false if you don't want a summry of test results to be sent to a configured google chat group. (default value is true)
+5. Set send google chat notification to false if you don't want a summary of test results to be sent to a configured google chat group. (default value is true)
 6. Click on Run workflow
 7. After tests are completed you can view test results on the test summary page
 8. Two types of artifacts are saved after the test is completed
@@ -21,6 +21,8 @@ OIDC conformance test workflow can be used to for this purpose.
 4. add the webhook url for value
 5. Click add secret
 
+This workflow will also automatically trigger after a release or a pre-release
+
 ## Testing locally
 
 ### Prerequisites 
@@ -32,6 +34,7 @@ You can use test_runner.sh script to start and configure identity server locally
 1. open test_runner.sh using a text editor and make the following modifications
    - assign url of conformance suite to CONFORMANCE_SUITE_URL. default is https://localhost:8443
    - assign the path of conformance-suite folder to CONFORMANCE_SUITE_PATH
+   - assign the path to identity server zip file to PRODUCT_IS_ZIP_PATH
    - set IS_LOCAL to true. default is false
 2. Save and exit
 3. Run the script using ```sudo bash test_runner.sh```
