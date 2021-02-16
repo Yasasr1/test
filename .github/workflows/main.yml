@@ -42,10 +42,12 @@ jobs:
       run: |
         owner="wso2"
         repo="product-is"
-        tag=${GITHUB_REF// }
-        artifact="wso2is-${tag:11}.zip"
-        echo $artifact
-        list_asset_url="https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag}"
+        tag=${GITHUB_REF:10}
+        tag_trimmed=${tag// }
+        echo "Tag=$tag"
+        artifact="wso2is-${tag_trimmed:1}.zip"
+        echo "Artifact=$artifact"
+        list_asset_url="https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag_trimmed}"
         asset_url=$(curl "${list_asset_url}" | jq ".assets[] | select(.name==\"${artifact}\") | .url" | sed 's/\"//g')
         curl -vLJO -H 'Accept: application/octet-stream' \
          "${asset_url}"
