@@ -40,11 +40,11 @@ jobs:
         
     - name: Download IS zip
       run: |
-        echo $GITHUB_REF
         owner="wso2"
         repo="product-is"
         tag=$GITHUB_REF
-        artifact="wso2is-${tag:1}.zip"
+        artifact="wso2is-${tag:11}.zip"
+        echo $artifact
         list_asset_url="https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag}"
         asset_url=$(curl "${list_asset_url}" | jq ".assets[] | select(.name==\"${artifact}\") | .url" | sed 's/\"//g')
         curl -vLJO -H 'Accept: application/octet-stream' \
