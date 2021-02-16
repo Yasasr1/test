@@ -40,6 +40,7 @@ jobs:
         
     - name: Download IS zip
       run: |
+        echo $GITHUB_REF
         owner="wso2"
         repo="product-is"
         tag=$GITHUB_REF
