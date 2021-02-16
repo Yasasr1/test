@@ -109,7 +109,7 @@ jobs:
         SEND_NOTIFICATION=${INPUT^^}
         if [ $SEND_NOTIFICATION == "TRUE" ]; then
           CONFORMANCE_SUITE_URL=https://localhost:8443
-          sudo python3 ./product-is/oidc-conformance-tests/send_notification.py $CONFORMANCE_SUITE_URL $GITHUB_RUN_NUMBER ${{job.status}} ${{github.repository}} ${{github.run_id}} ${{secrets.SENDER-EMAIL}} ${{secrets.PASSWORD}} ${{secrets.RECEIVER-LIST}}
+          sudo python3 ./product-is/oidc-conformance-tests/send_notification.py $CONFORMANCE_SUITE_URL $GITHUB_RUN_NUMBER ${{job.status}} ${{github.repository}} ${{github.run_id}} ${{secrets.SENDER_EMAIL}} ${{secrets.PASSWORD}} ${{secrets.RECEIVER_LIST}}
         elif [ $SEND_NOTIFICATION == "FALSE" ]; then
           echo "========================================"
           echo "Skipped sending google chat notification"
