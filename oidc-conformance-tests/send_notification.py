@@ -49,7 +49,9 @@ for test_plan in plan_list['data']:
 port = 465
 smtp_server = "smtp.gmail.com"
 message = """\
-Subject: OIDC Conformance Test """ + github_run_number + """ Summary
+Subject: OIDC Conformance Test #""" + github_run_number + """ Summary
+From: """ + sender_email + """
+To: """ + sys.argv[8] + """
 
 OIDC conformance  test run # """ + github_run_number + """ completed with status: """ + workflow_status + """
 Total test cases:""" + str(total_tests_count) + """
@@ -61,3 +63,4 @@ context = ssl.create_default_context()
 with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
     server.login(sender_email, password)
     server.sendmail(sender_email, receiver_list, message)
+    server.close()

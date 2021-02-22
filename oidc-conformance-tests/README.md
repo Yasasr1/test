@@ -76,9 +76,9 @@ This script use OIDC conformance suite APIs to export results of completed test 
 
 ### send_notification.py
 
-**Inputs** - Url of conformance suite(running locally), GitHub workflow run number, GitHub workflow status, GitHub repository name, GitHub workflow run id, google chat web hook url
+**Inputs** - Url of conformance suite(running locally), GitHub workflow run number, GitHub workflow status, GitHub repository name, GitHub workflow run id, Gmail credentials to send emails
 
-This script will obtain counts of test cases with failures and warnings using the API of OIDC conformance. Then send a notification with test summary to google chat using provided webhook
+This script will obtain counts of test cases with failures and warnings using the API of OIDC conformance. Then send emails with the summary of test results to provided email addresses
 
 ### test_runner.sh
 
