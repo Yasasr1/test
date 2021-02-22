@@ -90,11 +90,6 @@
                       [
                         "click",
                         "id",
-                        "rememberApproval"
-                      ],
-                      [
-                        "click",
-                        "id",
                         "approve"
                       ],
                       [
