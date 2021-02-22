@@ -95,7 +95,7 @@ jobs:
         if $IS_SUCCESSFUL
         then
           echo "======================"
-          echo "All Test Cases Passed!
+          echo "All Test Cases Passed!"
           echo "======================"
           exit 0
         else      
