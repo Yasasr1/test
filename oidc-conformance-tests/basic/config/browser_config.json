@@ -95,7 +95,7 @@
                       [
                         "wait",
                         "contains",
-                        "callback",
+                        "test/callback",
                         10
                       ]
                     ]
