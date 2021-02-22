@@ -246,13 +246,20 @@ def unpack_and_run(zip_file_name):
             print("Extracting " + zip_file_name)
             zip_file.extractall()
 
+        # temporary fix to resolve a issue in a test case -
+        # manually add JQuery import to oauth_response.html file before starting IS
+        print(zip_file_name)
+        match = re.search('\./(.*)\.zip', zip_file_name)
+        product_is_folder_name = match.group(1)
+        os.system("sed -i '/^    <script src=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/semantic-ui\/2.4.1\/semantic.min.js\"><\/script>.*/i \ \ \ \ <script src=\"https:\/\/code.jquery.com\/jquery-3.2.1.min.js\"><\/script>' ./" + product_is_folder_name + "/repository/resources/identity/pages/oauth_response.html")
+
         dir_name = ''
         # start identity server
         print("\nStarting Server")
         dir_list = os.listdir()
         r = re.compile('(?=^wso2is)(?=^((?!zip).)*$)')
         for line in dir_list:
-            if r.match(line):
+           if r.match(line):
                 print(line)
                 dir_name = line
                 break
