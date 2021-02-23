@@ -249,7 +249,7 @@ def unpack_and_run(zip_file_name):
         # temporary fix to resolve a issue in a test case -
         # manually add JQuery import to oauth_response.html file before starting IS
         print(zip_file_name)
-        match = re.search('\./(.*)\.zip', zip_file_name)
+        match = re.search('\.\./\.\./(.*)\.zip', zip_file_name)
         product_is_folder_name = match.group(1)
         os.system("sed -i '/^    <script src=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/semantic-ui\/2.4.1\/semantic.min.js\"><\/script>.*/i \ \ \ \ <script src=\"https:\/\/code.jquery.com\/jquery-3.2.1.min.js\"><\/script>' ./" + product_is_folder_name + "/repository/resources/identity/pages/oauth_response.html")
 
