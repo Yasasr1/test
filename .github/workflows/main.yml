@@ -17,11 +17,11 @@ on:
       send-email:
         description: 'Send test results to email'
         required: true
-        default: true
+        default: yes
       send-chat:
         description: 'Send test results to google chat'
         required: true
-        default: false
+        default: no
 
 jobs:
   build:
