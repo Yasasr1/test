@@ -21,7 +21,7 @@ on:
       send-chat:
         description: 'Send test results to google chat'
         required: true
-        default: false
+        default: true
 
 jobs:
   build:
