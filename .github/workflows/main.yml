@@ -132,6 +132,9 @@ jobs:
         fi
         SEND_EMAIL=${INPUT^^}
         if [ $SEND_EMAIL == "YES" ]; then
+          echo "============="
+          echo "Sending Email"
+          echo "============="
           CONFORMANCE_SUITE_URL=https://localhost:8443
           sudo python3 ./product-is/oidc-conformance-tests/send_email.py $CONFORMANCE_SUITE_URL $GITHUB_RUN_NUMBER ${{job.status}} ${{github.repository}} ${{github.run_id}} ${{secrets.SENDER_EMAIL}} ${{secrets.PASSWORD}} ${{secrets.RECEIVER_LIST}}
         elif [ $SEND_EMAIL == "NO" ]; then
@@ -153,6 +156,9 @@ jobs:
         fi
         SEND_CHAT=${INPUT^^}
         if [ $SEND_CHAT == "YES" ]; then
+          echo "==========================="
+          echo "Sending Google Chat Message"
+          echo "==========================="
           CONFORMANCE_SUITE_URL=https://localhost:8443
           sudo python3 ./product-is/oidc-conformance-tests/send_chat.py $CONFORMANCE_SUITE_URL $GITHUB_RUN_NUMBER ${{job.status}} ${{github.repository}} ${{github.run_id}} ${{secrets.GOOGLE_WEBHOOK}}
         elif [ $SEND_CHAT == "NO" ]; then
