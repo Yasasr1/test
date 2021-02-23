@@ -21,6 +21,11 @@ OIDC conformance test workflow can be used to for this purpose.
 4. add the webhook url for value
 5. Click add secret
 
+An email containing the same test summary will also be sent to a pre-configured list of email addresses. To configure this save sender email credentials and list of receiver emails as repository secrets
+* Save sender email as 'SENDER_EMAIL'
+* Save password as 'PASSWORD'
+* Save the list of receiver email as 'RECEIVER_LIST'. Save these as a string of comma separated email addresses
+
 This workflow will also automatically trigger after a release or a pre-release
 
 ## Testing locally
@@ -74,11 +79,17 @@ This script will start OIDC conformance suite using docker-compose locally
 
 This script use OIDC conformance suite APIs to export results of completed test plans as zip files
 
-### send_notification.py
+### send_email.py
 
-**Inputs** - Url of conformance suite(running locally), GitHub workflow run number, GitHub workflow status, GitHub repository name, GitHub workflow run id, Gmail credentials to send emails
+**Inputs** - Url of conformance suite(running locally), GitHub workflow run number, GitHub workflow status, GitHub repository name, GitHub workflow run id, Gmail credentials, List of receiver email addresses
 
-This script will obtain counts of test cases with failures and warnings using the API of OIDC conformance. Then send emails with the summary of test results to provided email addresses
+This script will obtain counts of test cases with failures and warnings using the API of OIDC conformance suite. Then send emails with the summary of test results to provided email addresses
+
+## send_chat.py
+
+**Inputs** - Url of conformance suite(running locally), GitHub workflow run number, GitHub workflow status, GitHub repository name, GitHub workflow run id, Google chat webhook url
+
+This script will obtain counts of test cases with failures and warnings using the API of OIDC conformance suite. Then send the test summary to a pre-configured google chat group
 
 ### test_runner.sh
 
