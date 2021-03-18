@@ -139,7 +139,31 @@
                                 [
                                     "wait",
                                     "contains",
-                                    "authorize?sessionDataKey",
+                                    "oauth2_consent",
+                                    10
+                                ]
+                            ]
+                        },
+                        {
+                            "task": "Consent",
+                            "match": "https://localhost:9443/authenticationendpoint/oauth2_consent*",
+                            "optional": true,
+                            "commands": [
+                                [
+                                    "wait",
+                                    "id",
+                                    "approve",
+                                    10
+                                ],
+                                [
+                                    "click",
+                                    "id",
+                                    "approve"
+                                ],
+                                [
+                                    "wait",
+                                    "contains",
+                                    "oauth2/authorize",
                                     10
                                 ]
                             ]
