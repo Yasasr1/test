@@ -69,8 +69,10 @@ if __name__ == '__main__':
             print("\n"+test_plan+"\n-----------------------------------")
             print("\nFails\n-----")
             print(*failed_plan_details[test_plan]['fails'], sep="\n")
+            print("\n" + str(len(failed_plan_details[test_plan]['fails'])) + " Failures")
             print("\nWarnings\n--------")
             print(*failed_plan_details[test_plan]['warnings'], sep="\n")
+            print("\n" + str(len(failed_plan_details[test_plan]['warnings'])) + " Warnings")
         if contains_fails:
             sys.exit(1)
         else:
