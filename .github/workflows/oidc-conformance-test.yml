@@ -64,7 +64,7 @@ jobs:
          "${asset_url}"
       
     - name: Clone conformance suite
-      run: git clone --depth 1 --branch release-v4.1.4 https://github.com/openid-certification/conformance-suite.git
+      run: git clone --depth 1 --branch release-v4.1.8 https://github.com/openid-certification/conformance-suite.git
          
     - name: Adding extra hosts to docker-compose-dev.yml
       run: sed -i '/^    volumes.*/i \ \ \ \ extra_hosts:\n \ \ \ \ - "localhost:\$IP\"' ./conformance-suite/docker-compose-dev.yml
