@@ -163,25 +163,8 @@
                                 [
                                     "wait",
                                     "contains",
-                                    "oauth2/authorize",
+                                    "test/callback",
                                     10
-                                ]
-                            ]
-                        },
-                        {
-                            "task": "Verify authorize",
-                            "match": "https://localhost:9443/oauth2/authorize*",
-                            "commands": [
-                                [
-                                    "wait",
-                                    "xpath",
-                                    "/html/body/div/div/div/p/a",
-                                    10
-                                ],
-                                [
-                                    "click",
-                                    "xpath",
-                                    "/html/body/div/div/div/p/a"
                                 ]
                             ]
                         },
