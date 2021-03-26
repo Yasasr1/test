@@ -23,8 +23,9 @@ from zipfile import ZipFile
 import subprocess
 import os
 import sys
-import constants
 from requests.exceptions import HTTPError
+import constants
+from config import browser_configuration
 
 headers = {
     'Content-Type': 'application/json',
@@ -284,7 +285,7 @@ def unpack_and_run(zip_file_name):
 
 
 # creates the IS_config.json file needed to run OIDC test plans and save in the given path
-def json_config_builder(service_provider_1, service_provider_2, output_file_path, config_file_path):
+def json_config_builder(service_provider_1, service_provider_2, output_file_path, plan_name):
     config = {
         "alias": constants.ALIAS,
         "server": {
@@ -307,15 +308,10 @@ def json_config_builder(service_provider_1, service_provider_2, output_file_path
             "client_id": service_provider_1['clientId'],
             "client_secret": service_provider_1['clientSecret']
         },
-        "browser": [],
-        "override": ''
+        "browser": browser_configuration.CONFIG[plan_name]["browser"],
+        "override": browser_configuration.CONFIG[plan_name]["override"]
     }
 
-    with open(config_file_path) as file:
-        browser_config = json.load(file)
-
-    config["browser"] = browser_config["browser"]
-    config["override"] = browser_config["override"]
     json_config = json.dumps(config, indent=4)
     f = open(output_file_path, "w")
     f.write(json_config)
@@ -343,7 +339,7 @@ def is_process_running(process_name):
 
 
 # perform all configurations and generate config file for a single OIDC test plan
-def generate_config_for_plan(service_provider1_config, service_provider2_config, output_file_path, browser_config):
+def generate_config_for_plan(service_provider1_config, service_provider2_config, output_file_path, plan_name):
     service_provider_1 = register_service_provider(service_provider1_config)
     service_provider_2 = register_service_provider(service_provider2_config)
     print(service_provider_1)
@@ -355,7 +351,7 @@ def generate_config_for_plan(service_provider1_config, service_provider2_config,
     configure_acr(service_provider_1['applicationId'], "./config/acr_config.json")
     configure_acr(service_provider_2['applicationId'], "./config/acr_config.json")
 
-    json_config_builder(service_provider_1, service_provider_2, output_file_path, browser_config)
+    json_config_builder(service_provider_1, service_provider_2, output_file_path, plan_name)
 
 
 warnings.filterwarnings("ignore")
@@ -398,23 +394,30 @@ edit_scope("openid", {
 
 generate_config_for_plan("./basic/config/service_provider1_config.json",
                          "./basic/config/service_provider2_config.json",
-                         "basic/IS_config_basic.json", "./basic/config/browser_config.json")
+                         "basic/IS_config_basic.json",
+                         "basic")
+
 generate_config_for_plan("./implicit/config/service_provider1_config.json",
                          "./implicit/config/service_provider2_config.json",
                          "implicit/IS_config_implicit.json",
-                         "./implicit/config/browser_config.json")
+                         "implicit")
+
 generate_config_for_plan("./hybrid/config/service_provider1_config.json",
                          "./hybrid/config/service_provider2_config.json",
-                         "hybrid/IS_config_hybrid.json", "./hybrid/config/browser_config.json")
+                         "hybrid/IS_config_hybrid.json",
+                         "hybrid")
+
 generate_config_for_plan("./formpost-basic/config/service_provider1_config.json",
                          "./formpost-basic/config/service_provider2_config.json",
                          "formpost-basic/IS_config_formpost_basic.json",
-                         "./formpost-basic/config/browser_config.json")
+                         "formpost-basic")
+
 generate_config_for_plan("./formpost-implicit/config/service_provider1_config.json",
                          "./formpost-implicit/config/service_provider2_config.json",
                          "formpost-implicit/IS_config_formpost_implicit.json",
-                         "./formpost-implicit/config/browser_config.json")
+                         "formpost-implicit")
+
 generate_config_for_plan("./formpost-hybrid/config/service_provider1_config.json",
                          "./formpost-hybrid/config/service_provider2_config.json",
                          "formpost-hybrid/IS_config_formpost_hybrid.json",
-                         "./formpost-hybrid/config/browser_config.json")
+                         "formpost-hybrid")

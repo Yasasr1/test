@@ -30,3 +30,5 @@ DCR_BODY = {
     "ext_param_client_id": DCR_CLIENT_ID,
     "ext_param_client_secret": DCR_CLIENT_SECRET
 }
+
+IS_HOSTNAME = "https://localhost:9443"

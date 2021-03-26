@@ -22,10 +22,11 @@ OIDC conformance test workflow can be used to for this purpose.
 4. add the webhook url for value
 5. Click add secret
 
-An email containing the same test summary will also be sent to a pre-configured list of email addresses. To configure this save sender email credentials and list of receiver emails as repository secrets
+An email containing the same test summary will also be sent to a pre-configured list of email addresses. To configure this save sender gmail credentials and list of receiver emails as repository secrets
 * Save sender email as 'SENDER_EMAIL'
 * Save password as 'PASSWORD'
 * Save the list of receiver email as 'RECEIVER_LIST'. Save these as a string of comma separated email addresses
+* You need to enable less secure application access in the gmail account
 
 This workflow will also automatically trigger after a release or a pre-release
 
