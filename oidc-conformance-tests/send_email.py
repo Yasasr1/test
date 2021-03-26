@@ -19,6 +19,7 @@ import json
 import warnings
 import sys
 import smtplib, ssl
+import constants
 
 conformance_suite_url = sys.argv[1]
 github_run_number = str(sys.argv[2])
@@ -48,8 +49,8 @@ for test_plan in plan_list['data']:
     if len(failed_tests_list['others']) > 0:
         total_tests_count += len(failed_tests_list['others'])
 
-port = 465
-smtp_server = "smtp.gmail.com"
+port = constants.SMTP_SERVER_PORT
+smtp_server = constants.SMTP_SERVER
 message = """\
 Subject: OIDC Conformance Test #""" + github_run_number + """ Summary
 From: """ + sender_email + """

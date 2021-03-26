@@ -142,7 +142,7 @@ def set_user_claim_values(config_file_path):
 
     print("\nSetting user claim values")
     try:
-        response = requests.patch(url="https://localhost:9443/scim2/Me", headers=headers, data=json.dumps(body), verify=False)
+        response = requests.patch(url=constants.IS_HOSTNAME + "/scim2/Me", headers=headers, data=json.dumps(body), verify=False)
         response.raise_for_status()
     except HTTPError as http_error:
         print(http_error)
@@ -224,7 +224,7 @@ def edit_scope(scope_id, body):
     print("\nChanging scope: " + scope_id)
     json_body = json.dumps(body)
     try:
-        response = requests.put(url="https://localhost:9443/api/server/v1/oidc/scopes/" + scope_id, headers=headers,
+        response = requests.put(url=constants.IS_HOSTNAME + "/api/server/v1/oidc/scopes/" + scope_id, headers=headers,
                                 data=json_body, verify=False)
         response.raise_for_status()
     except HTTPError as http_error:
@@ -289,11 +289,11 @@ def json_config_builder(service_provider_1, service_provider_2, output_file_path
     config = {
         "alias": constants.ALIAS,
         "server": {
-            "issuer": "https://localhost:9443/oauth2/token",
-            "jwks_uri": "https://localhost:9443/oauth2/jwks",
-            "authorization_endpoint": "https://localhost:9443/oauth2/authorize",
-            "token_endpoint": "https://localhost:9443/oauth2/token",
-            "userinfo_endpoint": "https://localhost:9443/oauth2/userinfo",
+            "issuer": constants.IS_HOSTNAME + "/oauth2/token",
+            "jwks_uri": constants.IS_HOSTNAME + "/oauth2/jwks",
+            "authorization_endpoint": constants.IS_HOSTNAME + "/oauth2/authorize",
+            "token_endpoint": constants.IS_HOSTNAME + "/oauth2/token",
+            "userinfo_endpoint": constants.IS_HOSTNAME + "/oauth2/userinfo",
             "acr_values": "acr1"
         },
         "client": {
@@ -374,7 +374,7 @@ change_local_claim_mapping(
         "claimURI": "phone_number",
         "mappedLocalClaimURI": "http://wso2.org/claims/mobile"
     },
-    "https://localhost:9443/api/server/v1/claim-dialects/aHR0cDovL3dzbzIub3JnL29pZGMvY2xhaW0/claims/cGhvbmVfbnVtYmVy")
+    constants.IS_HOSTNAME + "/api/server/v1/claim-dialects/aHR0cDovL3dzbzIub3JnL29pZGMvY2xhaW0/claims/cGhvbmVfbnVtYmVy")
 
 #change website from url to organization
 change_local_claim_mapping(
@@ -382,7 +382,7 @@ change_local_claim_mapping(
         "claimURI": "website",
         "mappedLocalClaimURI": "http://wso2.org/claims/organization"
     },
-    "https://localhost:9443/api/server/v1/claim-dialects/aHR0cDovL3dzbzIub3JnL29pZGMvY2xhaW0/claims/d2Vic2l0ZQ")
+    constants.IS_HOSTNAME + "/api/server/v1/claim-dialects/aHR0cDovL3dzbzIub3JnL29pZGMvY2xhaW0/claims/d2Vic2l0ZQ")
 
 edit_scope("openid", {
     "claims": [
