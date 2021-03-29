@@ -252,10 +252,11 @@ def unpack_and_run(zip_file_name):
         print(zip_file_name)
         match = re.search('\.\./\.\./(.*)\.zip', zip_file_name)
         product_is_folder_name = match.group(1)
-        os.system("sed -i '/^    <script src=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/semantic-ui\/2.4.1\/semantic.min.js\"><\/script>.*/i \ \ \ \ <script src=\"https:\/\/code.jquery.com\/jquery-3.2.1.min.js\"><\/script>' ./" + product_is_folder_name + "/repository/resources/identity/pages/oauth_response.html")
+        # os.system("sed -i '/^    <script src=\"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/semantic-ui\/2.4.1\/semantic.min.js\"><\/script>.*/i \ \ \ \ <script src=\"https:\/\/code.jquery.com\/jquery-3.2.1.min.js\"><\/script>' ./" + product_is_folder_name + "/repository/resources/identity/pages/oauth_response.html")
+        os.system("rm -rf ./" + product_is_folder_name + "/repository/resources/identity/pages/oauth_response.html")
         # output file content to stdout to verify
-        with open("./" + product_is_folder_name + "/repository/resources/identity/pages/oauth_response.html", 'r') as file:
-            print(file.read())
+        # with open("./" + product_is_folder_name + "/repository/resources/identity/pages/oauth_response.html", 'r') as file:
+        #    print(file.read())
 
         dir_name = ''
         # start identity server
