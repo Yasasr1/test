@@ -1219,18 +1219,8 @@ CONFIG = {
                                         "click",
                                         "id",
                                         "approve"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "test/callback",
-                                        10
                                     ]
                                 ]
-                            },
-                            {
-                                "task": "Verify",
-                                "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                             }
                         ]
                     }
