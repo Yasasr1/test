@@ -36,17 +36,17 @@ echo
 echo "Basic certification test plan"
 echo "-----------------------------"
 echo
-#python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-basic-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/basic/IS_config_basic.json 2>&1 | tee basic-certification-test-plan-log.txt
+python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-basic-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/basic/IS_config_basic.json 2>&1 | tee basic-certification-test-plan-log.txt
 echo
 echo "Implicit certification test plan"
 echo "-----------------------------"
 echo
-#python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-implicit-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/implicit/IS_config_implicit.json 2>&1 | tee implicit-certification-test-plan-log.txt
+python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-implicit-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/implicit/IS_config_implicit.json 2>&1 | tee implicit-certification-test-plan-log.txt
 echo
 echo "Hybrid certification test plan"
 echo "-----------------------------"
 echo
-#python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-hybrid-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/hybrid/IS_config_hybrid.json 2>&1 | tee hybrid-certification-test-plan-log.txt
+python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-hybrid-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/hybrid/IS_config_hybrid.json 2>&1 | tee hybrid-certification-test-plan-log.txt
 echo
 echo "Formpost basic certification test plan"
 echo "-----------------------------"
