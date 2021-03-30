@@ -51,12 +51,12 @@ echo
 echo "Formpost basic certification test plan"
 echo "-----------------------------"
 echo
-#python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-formpost-basic-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/formpost-basic/IS_config_formpost_basic.json 2>&1 | tee formpost-basic-certification-test-plan-log.txt
+python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-formpost-basic-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/formpost-basic/IS_config_formpost_basic.json 2>&1 | tee formpost-basic-certification-test-plan-log.txt
 echo
 echo "Formpost implicit certification test plan"
 echo "-----------------------------"
 echo
-#python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-formpost-implicit-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/formpost-implicit/IS_config_formpost_implicit.json 2>&1 | tee formpost-implicit-certification-test-plan-log.txt
+python3 $CONFORMANCE_SUITE_PATH/scripts/run-test-plan.py oidcc-formpost-implicit-certification-test-plan[server_metadata=static][client_registration=static_client] $PATH_TO_SCRIPTS/formpost-implicit/IS_config_formpost_implicit.json 2>&1 | tee formpost-implicit-certification-test-plan-log.txt
 echo
 echo "Formpost hybrid certification test plan"
 echo "-----------------------------"

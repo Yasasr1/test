@@ -1136,36 +1136,8 @@ CONFIG = {
                                 "click",
                                 "xpath",
                                 "/html/body/main/div/div[2]/div/form/div[9]/div[2]/button"
-                            ],
-                            [
-                                "wait",
-                                "contains",
-                                "oauth2/authorize",
-                                10
                             ]
                         ]
-                    },
-                    {
-                        "task": "Verify authorize",
-                        "match": constants.IS_HOSTNAME + "/oauth2/authorize*",
-                        "optional": True,
-                        "commands": [
-                            [
-                                "wait",
-                                "xpath",
-                                "/html/body/div/div/div/p/a",
-                                10
-                            ],
-                            [
-                                "click",
-                                "xpath",
-                                "/html/body/div/div/div/p/a"
-                            ]
-                        ]
-                    },
-                    {
-                        "task": "Verify callback",
-                        "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                     }
                 ]
             }
@@ -1344,35 +1316,8 @@ CONFIG = {
                                         "click",
                                         "xpath",
                                         "/html/body/main/div/div[2]/div/form/div[9]/div[2]/button"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "oauth2/authorize",
-                                        10
                                     ]
                                 ]
-                            },
-                            {
-                                "task": "Verify authorize",
-                                "match": constants.IS_HOSTNAME + "/oauth2/authorize*",
-                                "commands": [
-                                    [
-                                        "wait",
-                                        "xpath",
-                                        "/html/body/div/div/div/p/a",
-                                        10
-                                    ],
-                                    [
-                                        "click",
-                                        "xpath",
-                                        "/html/body/div/div/div/p/a"
-                                    ]
-                                ]
-                            },
-                            {
-                                "task": "Verify callback",
-                                "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                             }
                         ]
                     }
@@ -1412,35 +1357,8 @@ CONFIG = {
                                         "click",
                                         "xpath",
                                         "/html/body/main/div/div[2]/div/form/div[9]/div[2]/button"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "oauth2/authorize",
-                                        10
                                     ]
                                 ]
-                            },
-                            {
-                                "task": "Verify authorize",
-                                "match": constants.IS_HOSTNAME + "/oauth2/authorize*",
-                                "commands": [
-                                    [
-                                        "wait",
-                                        "xpath",
-                                        "/html/body/div/div/div/p/a",
-                                        10
-                                    ],
-                                    [
-                                        "click",
-                                        "xpath",
-                                        "/html/body/div/div/div/p/a"
-                                    ]
-                                ]
-                            },
-                            {
-                                "task": "Verify callback",
-                                "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                             }
                         ]
                     }
@@ -1474,38 +1392,9 @@ CONFIG = {
                                 "click",
                                 "xpath",
                                 "/html/body/main/div/div[2]/div/form/div[9]/div[2]/button"
-                            ],
-                            [
-                                "wait",
-                                "contains",
-                                "authorize?sessionDataKey",
-                                10
                             ]
                         ]
-                    },
-                    {
-                        "task": "Verify authorize",
-                        "match": constants.IS_HOSTNAME + "/oauth2/authorize*",
-                        "optional": True,
-                        "commands": [
-                            [
-                                "wait",
-                                "xpath",
-                                "/html/body/div/div/div/p/a",
-                                10
-                            ],
-                            [
-                                "click",
-                                "xpath",
-                                "/html/body/div/div/div/p/a"
-                            ]
-                        ]
-                    },
-                    {
-                        "task": "Verify callback",
-                        "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                     }
-
                 ]
             }
         ],
@@ -1562,18 +1451,8 @@ CONFIG = {
                                         "click",
                                         "xpath",
                                         "/html/body/main/div/div[2]/div/form/div[9]/div[2]/button"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "authorize?sessionDataKey",
-                                        10
                                     ]
                                 ]
-                            },
-                            {
-                                "task": "Verify",
-                                "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                             }
                         ]
                     }
@@ -1682,65 +1561,8 @@ CONFIG = {
                                         "click",
                                         "xpath",
                                         "/html/body/main/div/div[2]/div/form/div[9]/div[2]/button"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "authorize?sessionDataKey",
-                                        10
                                     ]
                                 ]
-                            },
-                            {
-                                "task": "Consent",
-                                "match": constants.IS_HOSTNAME + "/authenticationendpoint/oauth2_consent*",
-                                "optional": True,
-                                "commands": [
-                                    [
-                                        "wait",
-                                        "id",
-                                        "approve",
-                                        10
-                                    ],
-                                    [
-                                        "click",
-                                        "id",
-                                        "rememberApproval",
-                                        "optional"
-                                    ],
-                                    [
-                                        "click",
-                                        "id",
-                                        "approve"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "callback",
-                                        10
-                                    ]
-                                ]
-                            },
-                            {
-                                "task": "Verify authorize",
-                                "match": constants.IS_HOSTNAME + "/oauth2/authorize*",
-                                "commands": [
-                                    [
-                                        "wait",
-                                        "xpath",
-                                        "/html/body/div/div/div/p/a",
-                                        10
-                                    ],
-                                    [
-                                        "click",
-                                        "xpath",
-                                        "/html/body/div/div/div/p/a"
-                                    ]
-                                ]
-                            },
-                            {
-                                "task": "Verify callback",
-                                "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                             }
                         ]
                     }
@@ -1780,65 +1602,8 @@ CONFIG = {
                                         "click",
                                         "xpath",
                                         "/html/body/main/div/div[2]/div/form/div[9]/div[2]/button"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "authorize?sessionDataKey",
-                                        10
                                     ]
                                 ]
-                            },
-                            {
-                                "task": "Consent",
-                                "match": constants.IS_HOSTNAME + "/authenticationendpoint/oauth2_consent*",
-                                "optional": True,
-                                "commands": [
-                                    [
-                                        "wait",
-                                        "id",
-                                        "approve",
-                                        10
-                                    ],
-                                    [
-                                        "click",
-                                        "id",
-                                        "rememberApproval",
-                                        "optional"
-                                    ],
-                                    [
-                                        "click",
-                                        "id",
-                                        "approve"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "callback",
-                                        10
-                                    ]
-                                ]
-                            },
-                            {
-                                "task": "Verify authorize",
-                                "match": constants.IS_HOSTNAME + "/oauth2/authorize*",
-                                "commands": [
-                                    [
-                                        "wait",
-                                        "xpath",
-                                        "/html/body/div/div/div/p/a",
-                                        10
-                                    ],
-                                    [
-                                        "click",
-                                        "xpath",
-                                        "/html/body/div/div/div/p/a"
-                                    ]
-                                ]
-                            },
-                            {
-                                "task": "Verify callback",
-                                "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                             }
                         ]
                     }
@@ -1955,18 +1720,8 @@ CONFIG = {
                                         "click",
                                         "id",
                                         "approve"
-                                    ],
-                                    [
-                                        "wait",
-                                        "contains",
-                                        "test/callback",
-                                        10
                                     ]
                                 ]
-                            },
-                            {
-                                "task": "Verify callback",
-                                "match": "https://localhost.emobix.co.uk:8443/test/a/test/callback*"
                             }
                         ]
                     }
